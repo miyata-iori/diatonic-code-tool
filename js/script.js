@@ -331,14 +331,17 @@ const showRecommendBubble = (degreeNumber) => {
     const selectedChord = createDiatonicChordInfo(degreeNumber);
     const recommendDiatonics = connectionDcode[mode][degreeNumber] || [];
 
+    //リコメンドを表示するエリアを空にしてクラス付与
     recommendSpace.innerHTML = '';
     recommendSpace.classList.add('is-show');
-
+    //リコメンドのタイトル
     const title = `<div class="recommend-title">このコード ${selectedChord.rootNote} （${selectedChord.degree}）からつながるコード</div>`;
     recommendSpace.insertAdjacentHTML('beforeend', title);
 
-    //ここからまだ読んでない
+    //リコメンドのリスト
+    //空の<div>をここで作った
     const list = document.createElement('div');
+    //divの中にクラスを付けた
     list.classList.add('recommend-list');
 
     recommendDiatonics.forEach((recommendDiatonic) => {
@@ -352,9 +355,10 @@ const showRecommendBubble = (degreeNumber) => {
             <span class="recommend-code">${recommendChord.degree} ${recommendChord.rootNote}</span>
             <span class="recommend-reason">${recommendDiatonic.reason}</span>
         `;
+        //作ったbuttonをlistの子要素にする
         list.appendChild(button);
     });
-
+    //作ったlistをrecommendSpaceの子要素にする
     recommendSpace.appendChild(list);
 };
 

@@ -1,21 +1,31 @@
+.recommend-button {
+    display: block;
+    width: 100%;
+    padding: 10px;
+    border: 2px solid;
+    border-radius: 8px;
+    text-align: left;
+    background: #fff;
+}
+
 .suggestion--resolution {
-    border-color: blue;
+    border: 3px solid blue;
 }
 
 .suggestion--development {
-    border-color: red;
+    border: 3px solid red;
 }
 
 .suggestion--deceptive {
-    border-color: purple;
+    border: 3px solid purple;
 }
 
 .suggestion--cycle {
-    border-color: navy;
+    border: 3px solid navy;
 }
 
 .suggestion--soft {
-    border-color: green;
+    border: 3px solid green;
 }
 
 .recommend-bubble {
@@ -55,15 +65,7 @@
     gap: 8px;
 }
 
-.recommend-button {
-    display: block;
-    width: 100%;
-    padding: 10px;
-    border: 2px solid;
-    border-radius: 8px;
-    text-align: left;
-    background: #fff;
-}
+
 
 .recommend-code {
     display: block;
