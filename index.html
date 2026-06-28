@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>コード進行アプリv0</title>
+    <link rel="stylesheet" href="https://unpkg.com/ress/dist/ress.min.css">
+    <link rel="stylesheet" href="css/style.css">
+    <script src="js/script.js" defer></script>
+</head>
+
+<body>
+<div>
+<h1>使い方</h1>
+<P>
+1, キーを選択する<br>
+2,メジャーかマイナーを選択する<br>
+3, そのキーのダイアトニックコードが表示される<br>
+</P>
+</div>
+
+<div>
+<h2>キー＆調性の選択</h2>
+<select id="keySelect"></select>
+
+<button id="mode-btn">Major</button>
+<h2>スケール</h2>
+<h3 id="scale"></h3>
+</div>
+
+<div>
+<h2>ダイアトニックコード</h2>
+<div id="dCode"></div>
+<!--おすすめダイアトニックコードを表示する場所-->
+<div id="recommendBubble" class="recommend-bubble"></div>
+</div>
+</body>
+</html>
