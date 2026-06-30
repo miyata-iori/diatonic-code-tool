@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>コード進行アプリv0</title>
+    <title>ダイアトニックコード進行支援ツール</title>
     <link rel="stylesheet" href="https://unpkg.com/ress/dist/ress.min.css">
     <link rel="stylesheet" href="css/style.css">
     <script src="js/script.js" defer></script>
@@ -12,28 +12,41 @@
 <body>
 <div>
 <h1>使い方</h1>
-<P>
-1, キーを選択する<br>
-2,メジャーかマイナーを選択する<br>
-3, そのキーのダイアトニックコードが表示される<br>
-4, ダイアトニックコードをクリックするとつながるコードをリコメンドする<br>
-</P>
+<ol>
+    <li>キーを選択する</li>
+    <li>メジャー・マイナーを選択する</li>
+    <li>ダイアトニックコードが表示される</li>
+    <li>コードをクリックするとおすすめを表示する</li>
+</ol>
 </div>
 
-<div>
-<h2>キー＆調性の選択</h2>
-<select id="keySelect"></select>
+<div class="card">
+<h3>キー＆調性の選択</h3>
 
-<button id="mode-btn">Major</button>
-<h2>スケール</h2>
+<div class="row-control">
+<div class="control">
+<label>キー</label>
+<select id="keySelect"></select>
+</div>
+
+<div class="control">
+<label>調性</label>
+<button id="mode-btn" class="mode-btn">Major</button>
+</div>
+
+<div class="control">
+<h3>現在のスケール</h3>
 <h3 id="scale"></h3>
 </div>
+</div>
+</div>
 
-<div>
+
+<div class="card">
 <h2>ダイアトニックコード</h2>
-<div id="dCode"></div>
+<div id="dCode" class="card"></div>
 <!--おすすめダイアトニックコードを表示する場所-->
-<div id="recommendBubble" class="recommend-bubble"></div>
+<div id="recommendBubble" class="recommend-bubble card"></div>
 </div>
 </body>
 </html>

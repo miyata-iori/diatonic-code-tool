@@ -290,22 +290,17 @@ const makeDiatonicCodeButton = () => {
     const scale = createScale();
     
     buttonSpace.innerHTML = '';
-
     scale.forEach((aScaleTone) =>{
     const codeNumber = scale.indexOf(aScaleTone)+1;
     const degree = degreeExchange[mode][codeNumber];
     //コードタイプMmもここで区別
+    //もしメジャーコード以外ならそれに対応した文字をつける
+    
     const chordType = diatonicChordTypes[mode][codeNumber -1];
-
     const chordTones = createChordTone(aScaleTone, chordType);
+    const dCodeButton = `<button class="diatonic-button" value="${aScaleTone}"  data-degree-number = "${codeNumber}" data-degree ="${degree}" data-chord-type="${chordType}" data-chord-tone = "${chordTones.join('-')}">${aScaleTone}</button>`;
     
-
-    const dCodeButton = `<button value="${aScaleTone}"  data-degree-number = "${codeNumber}" data-degree ="${degree}" data-chord-type="${chordType}" data-chord-tone = "${chordTones.join('-')}">${aScaleTone}</button>`;
     buttonSpace.insertAdjacentHTML('beforeend',dCodeButton)
-    
-    
-
-    
 }
 );
 };
