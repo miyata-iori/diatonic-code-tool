@@ -10,11 +10,10 @@
 </head>
 
 <body>
-<div>
+<div class="card">
 <h1>使い方</h1>
 <ol>
-    <li>キーを選択する</li>
-    <li>メジャー・マイナーを選択する</li>
+    <li>キーとメジャー/マイナーを選択する</li>
     <li>ダイアトニックコードが表示される</li>
     <li>コードをクリックするとおすすめを表示する</li>
 </ol>
@@ -26,17 +25,17 @@
 <div class="row-control">
 <div class="control">
 <label>キー</label>
-<select id="keySelect"></select>
+<select class="major" id="keySelect"></select>
 </div>
 
 <div class="control">
 <label>調性</label>
-<button id="mode-btn" class="mode-btn">Major</button>
+<button id="mode-btn" class="button major">Major</button>
 </div>
 
 <div class="control">
 <h3>現在のスケール</h3>
-<h3 id="scale"></h3>
+<h1 id="scale"></h1>
 </div>
 </div>
 </div>
@@ -44,9 +43,11 @@
 
 <div class="card">
 <h2>ダイアトニックコード</h2>
-<div id="dCode" class="card"></div>
-<!--おすすめダイアトニックコードを表示する場所-->
-<div id="recommendBubble" class="recommend-bubble card"></div>
+<div id="dCode"></div>
 </div>
+
+<!--おすすめダイアトニックコードを表示する場所-->
+<div id="recommendBubble" class="recommend-bubble"></div>
+
 </body>
 </html>

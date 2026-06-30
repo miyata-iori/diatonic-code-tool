@@ -1,22 +1,14 @@
+/*========================================
+  ① 共通
+========================================*/
+
 body {
     max-width: 900px;
-    margin-top:40px;
-    margin-bottom:40px;
-    margin-left:auto;
-    margin-right:auto;
+    margin: 40px auto;
     padding: 20px;
 }
-.recommend-button {
-    display: block;
-    width: 100%;
-    padding: 10px;
-    border: 2px solid;
-    border-radius: 8px;
-    text-align: left;
-    background: #fff;
-}
 
-.card{
+.card {
     background: white;
     border: 1px solid #ddd;
     border-radius: 12px;
@@ -25,89 +17,121 @@ body {
     box-shadow: 0 3px 8px rgba(0,0,0,0.08);
 }
 
-.row-control{
-    display:flex;
-    gap:30px;
-    align-items:flex-end;
+
+/*========================================
+  ② レイアウト
+========================================*/
+
+.row-control {
+    display: flex;
+    gap: 30px;
+    align-items: flex-end;
 }
 
-.control{
-    margin-bottom:16px;
+.control {
+    margin-bottom: 16px;
 }
 
-label{
-    display:block;
-    margin-bottom:6px;
-    font-weight:bold;
+label {
+    display: block;
+    margin-bottom: 6px;
+    font-weight: bold;
 }
 
-select{
-    width: 60px;
-    padding: 10px 14px;
-    text-align:center;
-    
-    font-size: 16px;
-    font-weight:bold;
-    border: 1px solid #bbb;
-    border-radius: 8px;
-    background:#3b82f6;
-    color:white;
-    cursor: pointer;
-}
 
-select:hover{background:#354e99;}
+/*========================================
+  ③ フォーム（ボタン・セレクト）
+========================================*/
 
-.mode-btn{
-    padding:10px 20px;
-    border:none;
-    border-radius:8px;
-    background:#3b82f6;
-    color:white;
-    font-size:16px;
-    font-weight:bold;
-    cursor:pointer;
-    transition:.2s;
-}
-
-.mode-btn:hover{background:#354e99;}
-
-.diatonic-button {
+.button{
+    width: 80px;
     padding: 12px 18px;
     border: 2px solid #3b82f6;
     border-radius: 10px;
-
-    background: white;
-    color: black;
-
-    font-weight: bold;
     font-size: 16px;
-
+    font-weight: bold;
     cursor: pointer;
-
-    transition: all 0.2s ease;
+    transition: all .2s ease;
 }
 
-.diatonic-button:hover{background:#354e99}
-
-.suggestion--resolution {
-    border: 3px solid blue;
+.button:hover {
+    transform: translateY(-2px);
 }
 
-.suggestion--development {
-    border: 3px solid red;
+.button:active {
+    transform: scale(.97);
 }
 
-.suggestion--deceptive {
-    border: 3px solid purple;
+select {
+    appearance: auto;
+    width: 80px;
+    text-align: center;
+    padding: 12px 18px;
+    border-radius: 10px;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all .2s ease;
 }
 
-.suggestion--cycle {
-    border: 3px solid navy;
+select:hover {
+    transform: translateY(-2px);
 }
 
-.suggestion--soft {
-    border: 3px solid green;
+select:focus {
+    outline: none;
+    border-color: #f59e0b;
+    box-shadow: 0 0 0 3px rgba(245,158,11,.3);
 }
+
+.mode-btn:hover {
+    background: #354e99;
+}
+
+#dCode{
+    display:flex;
+    gap:12px;
+}
+
+
+/*========================================
+  ④ ダイアトニックコード
+========================================*/
+
+/* コードタイプ */
+
+.major {
+    background: #f59e0b;
+    border-color: #f59e0b;
+    color: white;
+}
+
+.major:hover {
+    background: #d97706;
+}
+
+.minor {
+    background: #7c3aed;
+    border-color: #7c3aed;
+    color: white;
+}
+
+.minor:hover {
+    background: #6d28d9;
+}
+
+.diminished {
+    border-color: #666;
+}
+
+.diminished:hover {
+    background: #4b5563;
+}
+
+
+/*========================================
+  ⑤ おすすめ吹き出し
+========================================*/
 
 .recommend-bubble {
     display: none;
@@ -146,7 +170,15 @@ select:hover{background:#354e99;}
     gap: 8px;
 }
 
-
+.recommend-button {
+    display: block;
+    width: 100%;
+    padding: 10px;
+    border: 2px solid;
+    border-radius: 8px;
+    text-align: left;
+    background: #fff;
+}
 
 .recommend-code {
     display: block;
@@ -156,5 +188,27 @@ select:hover{background:#354e99;}
 .recommend-reason {
     display: block;
     margin-top: 4px;
-    font-size: 0.9rem;
+    font-size: .9rem;
+}
+
+/* 推薦タイプ */
+
+.suggestion--resolution {
+    border: 3px solid blue;
+}
+
+.suggestion--development {
+    border: 3px solid red;
+}
+
+.suggestion--deceptive {
+    border: 3px solid purple;
+}
+
+.suggestion--cycle {
+    border: 3px solid navy;
+}
+
+.suggestion--soft {
+    border: 3px solid green;
 }

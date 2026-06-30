@@ -35,6 +35,12 @@ const ChordTypes = {
                     minor:[0%12, 3%12, 7%12],
                     diminished:[0%12, 3%12, 6%12],
                     };
+//コードの表示名設定
+const chordName = {
+                    major: "",
+                    minor: "m",
+                    diminished: "dim",
+};
 //ディグリー表記に変換する                    
 const degreeExchange = 
 {
@@ -205,6 +211,7 @@ const connectionDcode = {
         ],
     }
 }
+//④関数
 const noteUpDate = () => {
 
     //現在の選択保存、カラならCにする（初期設定）
@@ -294,12 +301,15 @@ const makeDiatonicCodeButton = () => {
     const codeNumber = scale.indexOf(aScaleTone)+1;
     const degree = degreeExchange[mode][codeNumber];
     //コードタイプMmもここで区別
-    //もしメジャーコード以外ならそれに対応した文字をつける
-    
+   
+
+
     const chordType = diatonicChordTypes[mode][codeNumber -1];
+    ///コードタイプに合った名前を付与するための付加文字
+    const chordTypeName = chordName[chordType];
     const chordTones = createChordTone(aScaleTone, chordType);
-    const dCodeButton = `<button class="diatonic-button" value="${aScaleTone}"  data-degree-number = "${codeNumber}" data-degree ="${degree}" data-chord-type="${chordType}" data-chord-tone = "${chordTones.join('-')}">${aScaleTone}</button>`;
-    
+    const dCodeButton = `<button class="diatonic-button button ${chordType}" value="${aScaleTone}"  data-degree-number = "${codeNumber}" data-degree ="${degree}" data-chord-type="${chordType}" data-chord-tone = "${chordTones.join('-')}">${aScaleTone}${chordTypeName}</button>`;
+   
     buttonSpace.insertAdjacentHTML('beforeend',dCodeButton)
 }
 );
@@ -363,11 +373,19 @@ modeBtn.addEventListener('click', () => {
     if(mode === 'major'){
         mode = 'minor';
         modeBtn.textContent = 'Minor';
+        modeBtn.classList.remove("major");
+        modeBtn.classList.add("minor");
+        keySelect.classList.remove("major");
+        keySelect.classList.add("minor");
     }
     else{
         mode = 'major';
         modeBtn.textContent = 'Major';
-        
+        modeBtn.classList.remove("minor");
+        modeBtn.classList.add("major"); 
+        keySelect.classList.remove("minor");
+        keySelect.classList.add("major");
+               
     }
  
     //console.log(`モードは${mode}に変更されました`);
