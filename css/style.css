@@ -154,6 +154,7 @@ select:focus {
     border-left: 2px solid #222;
     border-top: 2px solid #222;
     transform: rotate(45deg);
+    left: calc(var(--arrow-left) - 8px);
 }
 
 .recommend-bubble.is-show {
@@ -170,45 +171,54 @@ select:focus {
     gap: 8px;
 }
 
-.recommend-button {
-    display: block;
-    width: 100%;
-    padding: 10px;
-    border: 2px solid;
-    border-radius: 8px;
-    text-align: left;
-    background: #fff;
+.recommend-button{
+    width:40%;
+    padding:16px;
+    border:none;
+    border-left:6px solid;
+    border-radius:8px;
+    background:white;
+    text-align:left;
+    transition:.2s;
 }
 
-.recommend-code {
-    display: block;
-    font-weight: bold;
+.recommend-button:hover{
+    transform:translateY(-2px);
+    box-shadow:0 4px 12px rgba(0,0,0,.12);
 }
 
-.recommend-reason {
-    display: block;
-    margin-top: 4px;
-    font-size: .9rem;
+.recommend-code{
+    display:block;
+    font-size:1.2rem;
+    font-weight:bold;
+}
+
+.recommend-reason{
+    display:block;
+    margin-top:6px;
+    color:#666;
+    font-size:.9rem;
+    line-height:1.5;
 }
 
 /* 推薦タイプ */
 
-.suggestion--resolution {
-    border: 3px solid blue;
+.suggestion--resolution{
+    border-left-color:#ef4444;
 }
 
-.suggestion--development {
-    border: 3px solid red;
+.suggestion--development{
+    border-left-color:#22c55e;
 }
 
-.suggestion--deceptive {
-    border: 3px solid purple;
+.suggestion--deceptive{
+    border-left-color:#8b5cf6;
 }
 
-.suggestion--cycle {
-    border: 3px solid navy;
+.suggestion--cycle{
+    border-left-color:#2563eb;
 }
 
-.suggestion--soft {
-    border: 3px solid green;
+.suggestion--soft{
+    border-left-color:#16a34a;
 }

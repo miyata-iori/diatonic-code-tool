@@ -340,13 +340,13 @@ const showRecommendBubble = (degreeNumber) => {
     recommendSpace.innerHTML = '';
     recommendSpace.classList.add('is-show');
     //リコメンドのタイトル
-    const title = `<div class="recommend-title">このコード ${selectedChord.rootNote} （${selectedChord.degree}）からつながるコード</div>`;
+    const title = `<div class="recommend-title">${selectedChord.rootNote}${chordName[selectedChord.chordType]}  (${selectedChord.degree})からつながるコード</div>`;
     recommendSpace.insertAdjacentHTML('beforeend', title);
 
     //リコメンドのリスト
-    //空の<div>をここで作った
+    //空の<div>をここで作る
     const list = document.createElement('div');
-    //divの中にクラスを付けた
+    //divの中にクラスを付ける
     list.classList.add('recommend-list');
 
     recommendDiatonics.forEach((recommendDiatonic) => {
@@ -357,8 +357,10 @@ const showRecommendBubble = (degreeNumber) => {
         button.dataset.chordType = recommendChord.chordType;
         button.dataset.chordTone = recommendChord.chordTones.join('-');
         button.innerHTML = `
-            <span class="recommend-code">${recommendChord.degree} ${recommendChord.rootNote}</span>
-            <span class="recommend-reason">${recommendDiatonic.reason}</span>
+            <div class="recommend-header">
+            <span class="recommend-code ${recommendChord.chordType}">${recommendChord.rootNote}${chordName[recommendChord.chordType]}   (${recommendChord.degree})</span>
+            </div>
+            <span class="recommend-reason">${recommendDiatonic.reason}<br>コードトーンは${recommendChord.chordTones.join('-')}</span>
         `;
         //作ったbuttonをlistの子要素にする
         list.appendChild(button);
@@ -420,17 +422,29 @@ buttonSpace.addEventListener('click', (event) => {
     const button = event.target;
     const degreeNumber = Number(button.dataset.degreeNumber);
     const recommendDiatonics = connectionDcode[mode][degreeNumber] || [];
-    console.log(`このコードのmodeは${button.dataset.chordType}で構成音は${button.dataset.chordTone}`);
-    if(recommendDiatonics.length === 0){
-        console.log('connection rule is not set yet');
-        return;
-    }
-    recommendDiatonics.forEach((recommendDiatonic) => {
-        console.log(`つながるコードは${recommendDiatonic.recommend}で、その理由は${recommendDiatonic.reason}、機能和声的な意義は${recommendDiatonic.type}`);
-    });
+    //console.log(`このコードのmodeは${button.dataset.chordType}で構成音は${button.dataset.chordTone}`);
+    //if(recommendDiatonics.length === 0){
+        //console.log('connection rule is not set yet');
+        // return;
+    // }
+    // recommendDiatonics.forEach((recommendDiatonic) => {
+        //console.log(`つながるコードは${recommendDiatonic.recommend}で、その理由は${recommendDiatonic.reason}、機能和声的な意義は${recommendDiatonic.type}`);
+    // });
     showRecommendBubble(degreeNumber);
+    //クリックされたボタンの中心をとらえる
+    const buttonRect = button.getBoundingClientRect();
+    const bubbleRect = recommendSpace.getBoundingClientRect();
+    const center =
+    buttonRect.left
+    - bubbleRect.left
+    + buttonRect.width / 2;
+    recommendSpace.style.setProperty(
+    '--arrow-left',
+    `${center}px`
+    );
 } );
 
+//リコメンドがクリックされたときに実行する
 recommendSpace.addEventListener('click', (event) => {
     const button = event.target.closest('button');
     if(!button){
